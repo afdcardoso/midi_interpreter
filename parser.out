@@ -1,0 +1,708 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> command
+Rule 2     program -> program command
+Rule 3     command -> FUNCNAME = LFUNC program RFUNC
+Rule 4     duration -> TIMEUP
+Rule 5     duration -> TIMEDOWN
+Rule 6     command -> duration
+Rule 7     command -> PAUSE
+Rule 8     command -> COMMENT
+Rule 9     play -> PLAY
+Rule 10    play -> PLAY TIL PLAY
+Rule 11    play -> PLAY TIL TIMEUP PLAY
+Rule 12    play -> PLAY TIL TIMEDOWN PLAY
+Rule 13    play -> CHORD
+Rule 14    play -> EXEC FUNCNAME
+Rule 15    command -> play
+Rule 16    tone -> NOTEUP
+Rule 17    tone -> NOTEDOWN
+Rule 18    tone -> NOTEUP LBRACKET INT RBRACKET
+Rule 19    tone -> NOTEDOWN LBRACKET INT RBRACKET
+Rule 20    command -> tone
+Rule 21    command -> NOTE
+
+Terminals, with rules where they appear
+
+=                    : 3
+CHORD                : 13
+COMMENT              : 8
+EXEC                 : 14
+FUNCNAME             : 3 14
+INT                  : 18 19
+LBRACKET             : 18 19
+LFUNC                : 3
+NOTE                 : 21
+NOTEDOWN             : 17 19
+NOTEUP               : 16 18
+PAUSE                : 7
+PLAY                 : 9 10 10 11 11 12 12
+RBRACKET             : 18 19
+RFUNC                : 3
+TIL                  : 10 11 12
+TIMEDOWN             : 5 12
+TIMEUP               : 4 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+command              : 1 2
+duration             : 6
+play                 : 15
+program              : 2 3 0
+tone                 : 20
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . command
+    (2) program -> . program command
+    (3) command -> . FUNCNAME = LFUNC program RFUNC
+    (6) command -> . duration
+    (7) command -> . PAUSE
+    (8) command -> . COMMENT
+    (15) command -> . play
+    (20) command -> . tone
+    (21) command -> . NOTE
+    (4) duration -> . TIMEUP
+    (5) duration -> . TIMEDOWN
+    (9) play -> . PLAY
+    (10) play -> . PLAY TIL PLAY
+    (11) play -> . PLAY TIL TIMEUP PLAY
+    (12) play -> . PLAY TIL TIMEDOWN PLAY
+    (13) play -> . CHORD
+    (14) play -> . EXEC FUNCNAME
+    (16) tone -> . NOTEUP
+    (17) tone -> . NOTEDOWN
+    (18) tone -> . NOTEUP LBRACKET INT RBRACKET
+    (19) tone -> . NOTEDOWN LBRACKET INT RBRACKET
+
+    FUNCNAME        shift and go to state 3
+    PAUSE           shift and go to state 5
+    COMMENT         shift and go to state 6
+    NOTE            shift and go to state 9
+    TIMEUP          shift and go to state 10
+    TIMEDOWN        shift and go to state 11
+    PLAY            shift and go to state 12
+    CHORD           shift and go to state 13
+    EXEC            shift and go to state 14
+    NOTEUP          shift and go to state 15
+    NOTEDOWN        shift and go to state 16
+
+    program                        shift and go to state 1
+    command                        shift and go to state 2
+    duration                       shift and go to state 4
+    play                           shift and go to state 7
+    tone                           shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+    (2) program -> program . command
+    (3) command -> . FUNCNAME = LFUNC program RFUNC
+    (6) command -> . duration
+    (7) command -> . PAUSE
+    (8) command -> . COMMENT
+    (15) command -> . play
+    (20) command -> . tone
+    (21) command -> . NOTE
+    (4) duration -> . TIMEUP
+    (5) duration -> . TIMEDOWN
+    (9) play -> . PLAY
+    (10) play -> . PLAY TIL PLAY
+    (11) play -> . PLAY TIL TIMEUP PLAY
+    (12) play -> . PLAY TIL TIMEDOWN PLAY
+    (13) play -> . CHORD
+    (14) play -> . EXEC FUNCNAME
+    (16) tone -> . NOTEUP
+    (17) tone -> . NOTEDOWN
+    (18) tone -> . NOTEUP LBRACKET INT RBRACKET
+    (19) tone -> . NOTEDOWN LBRACKET INT RBRACKET
+
+    FUNCNAME        shift and go to state 3
+    PAUSE           shift and go to state 5
+    COMMENT         shift and go to state 6
+    NOTE            shift and go to state 9
+    TIMEUP          shift and go to state 10
+    TIMEDOWN        shift and go to state 11
+    PLAY            shift and go to state 12
+    CHORD           shift and go to state 13
+    EXEC            shift and go to state 14
+    NOTEUP          shift and go to state 15
+    NOTEDOWN        shift and go to state 16
+
+    command                        shift and go to state 17
+    duration                       shift and go to state 4
+    play                           shift and go to state 7
+    tone                           shift and go to state 8
+
+state 2
+
+    (1) program -> command .
+
+    FUNCNAME        reduce using rule 1 (program -> command .)
+    PAUSE           reduce using rule 1 (program -> command .)
+    COMMENT         reduce using rule 1 (program -> command .)
+    NOTE            reduce using rule 1 (program -> command .)
+    TIMEUP          reduce using rule 1 (program -> command .)
+    TIMEDOWN        reduce using rule 1 (program -> command .)
+    PLAY            reduce using rule 1 (program -> command .)
+    CHORD           reduce using rule 1 (program -> command .)
+    EXEC            reduce using rule 1 (program -> command .)
+    NOTEUP          reduce using rule 1 (program -> command .)
+    NOTEDOWN        reduce using rule 1 (program -> command .)
+    $end            reduce using rule 1 (program -> command .)
+    RFUNC           reduce using rule 1 (program -> command .)
+
+
+state 3
+
+    (3) command -> FUNCNAME . = LFUNC program RFUNC
+
+    =               shift and go to state 18
+
+
+state 4
+
+    (6) command -> duration .
+
+    FUNCNAME        reduce using rule 6 (command -> duration .)
+    PAUSE           reduce using rule 6 (command -> duration .)
+    COMMENT         reduce using rule 6 (command -> duration .)
+    NOTE            reduce using rule 6 (command -> duration .)
+    TIMEUP          reduce using rule 6 (command -> duration .)
+    TIMEDOWN        reduce using rule 6 (command -> duration .)
+    PLAY            reduce using rule 6 (command -> duration .)
+    CHORD           reduce using rule 6 (command -> duration .)
+    EXEC            reduce using rule 6 (command -> duration .)
+    NOTEUP          reduce using rule 6 (command -> duration .)
+    NOTEDOWN        reduce using rule 6 (command -> duration .)
+    $end            reduce using rule 6 (command -> duration .)
+    RFUNC           reduce using rule 6 (command -> duration .)
+
+
+state 5
+
+    (7) command -> PAUSE .
+
+    FUNCNAME        reduce using rule 7 (command -> PAUSE .)
+    PAUSE           reduce using rule 7 (command -> PAUSE .)
+    COMMENT         reduce using rule 7 (command -> PAUSE .)
+    NOTE            reduce using rule 7 (command -> PAUSE .)
+    TIMEUP          reduce using rule 7 (command -> PAUSE .)
+    TIMEDOWN        reduce using rule 7 (command -> PAUSE .)
+    PLAY            reduce using rule 7 (command -> PAUSE .)
+    CHORD           reduce using rule 7 (command -> PAUSE .)
+    EXEC            reduce using rule 7 (command -> PAUSE .)
+    NOTEUP          reduce using rule 7 (command -> PAUSE .)
+    NOTEDOWN        reduce using rule 7 (command -> PAUSE .)
+    $end            reduce using rule 7 (command -> PAUSE .)
+    RFUNC           reduce using rule 7 (command -> PAUSE .)
+
+
+state 6
+
+    (8) command -> COMMENT .
+
+    FUNCNAME        reduce using rule 8 (command -> COMMENT .)
+    PAUSE           reduce using rule 8 (command -> COMMENT .)
+    COMMENT         reduce using rule 8 (command -> COMMENT .)
+    NOTE            reduce using rule 8 (command -> COMMENT .)
+    TIMEUP          reduce using rule 8 (command -> COMMENT .)
+    TIMEDOWN        reduce using rule 8 (command -> COMMENT .)
+    PLAY            reduce using rule 8 (command -> COMMENT .)
+    CHORD           reduce using rule 8 (command -> COMMENT .)
+    EXEC            reduce using rule 8 (command -> COMMENT .)
+    NOTEUP          reduce using rule 8 (command -> COMMENT .)
+    NOTEDOWN        reduce using rule 8 (command -> COMMENT .)
+    $end            reduce using rule 8 (command -> COMMENT .)
+    RFUNC           reduce using rule 8 (command -> COMMENT .)
+
+
+state 7
+
+    (15) command -> play .
+
+    FUNCNAME        reduce using rule 15 (command -> play .)
+    PAUSE           reduce using rule 15 (command -> play .)
+    COMMENT         reduce using rule 15 (command -> play .)
+    NOTE            reduce using rule 15 (command -> play .)
+    TIMEUP          reduce using rule 15 (command -> play .)
+    TIMEDOWN        reduce using rule 15 (command -> play .)
+    PLAY            reduce using rule 15 (command -> play .)
+    CHORD           reduce using rule 15 (command -> play .)
+    EXEC            reduce using rule 15 (command -> play .)
+    NOTEUP          reduce using rule 15 (command -> play .)
+    NOTEDOWN        reduce using rule 15 (command -> play .)
+    $end            reduce using rule 15 (command -> play .)
+    RFUNC           reduce using rule 15 (command -> play .)
+
+
+state 8
+
+    (20) command -> tone .
+
+    FUNCNAME        reduce using rule 20 (command -> tone .)
+    PAUSE           reduce using rule 20 (command -> tone .)
+    COMMENT         reduce using rule 20 (command -> tone .)
+    NOTE            reduce using rule 20 (command -> tone .)
+    TIMEUP          reduce using rule 20 (command -> tone .)
+    TIMEDOWN        reduce using rule 20 (command -> tone .)
+    PLAY            reduce using rule 20 (command -> tone .)
+    CHORD           reduce using rule 20 (command -> tone .)
+    EXEC            reduce using rule 20 (command -> tone .)
+    NOTEUP          reduce using rule 20 (command -> tone .)
+    NOTEDOWN        reduce using rule 20 (command -> tone .)
+    $end            reduce using rule 20 (command -> tone .)
+    RFUNC           reduce using rule 20 (command -> tone .)
+
+
+state 9
+
+    (21) command -> NOTE .
+
+    FUNCNAME        reduce using rule 21 (command -> NOTE .)
+    PAUSE           reduce using rule 21 (command -> NOTE .)
+    COMMENT         reduce using rule 21 (command -> NOTE .)
+    NOTE            reduce using rule 21 (command -> NOTE .)
+    TIMEUP          reduce using rule 21 (command -> NOTE .)
+    TIMEDOWN        reduce using rule 21 (command -> NOTE .)
+    PLAY            reduce using rule 21 (command -> NOTE .)
+    CHORD           reduce using rule 21 (command -> NOTE .)
+    EXEC            reduce using rule 21 (command -> NOTE .)
+    NOTEUP          reduce using rule 21 (command -> NOTE .)
+    NOTEDOWN        reduce using rule 21 (command -> NOTE .)
+    $end            reduce using rule 21 (command -> NOTE .)
+    RFUNC           reduce using rule 21 (command -> NOTE .)
+
+
+state 10
+
+    (4) duration -> TIMEUP .
+
+    FUNCNAME        reduce using rule 4 (duration -> TIMEUP .)
+    PAUSE           reduce using rule 4 (duration -> TIMEUP .)
+    COMMENT         reduce using rule 4 (duration -> TIMEUP .)
+    NOTE            reduce using rule 4 (duration -> TIMEUP .)
+    TIMEUP          reduce using rule 4 (duration -> TIMEUP .)
+    TIMEDOWN        reduce using rule 4 (duration -> TIMEUP .)
+    PLAY            reduce using rule 4 (duration -> TIMEUP .)
+    CHORD           reduce using rule 4 (duration -> TIMEUP .)
+    EXEC            reduce using rule 4 (duration -> TIMEUP .)
+    NOTEUP          reduce using rule 4 (duration -> TIMEUP .)
+    NOTEDOWN        reduce using rule 4 (duration -> TIMEUP .)
+    $end            reduce using rule 4 (duration -> TIMEUP .)
+    RFUNC           reduce using rule 4 (duration -> TIMEUP .)
+
+
+state 11
+
+    (5) duration -> TIMEDOWN .
+
+    FUNCNAME        reduce using rule 5 (duration -> TIMEDOWN .)
+    PAUSE           reduce using rule 5 (duration -> TIMEDOWN .)
+    COMMENT         reduce using rule 5 (duration -> TIMEDOWN .)
+    NOTE            reduce using rule 5 (duration -> TIMEDOWN .)
+    TIMEUP          reduce using rule 5 (duration -> TIMEDOWN .)
+    TIMEDOWN        reduce using rule 5 (duration -> TIMEDOWN .)
+    PLAY            reduce using rule 5 (duration -> TIMEDOWN .)
+    CHORD           reduce using rule 5 (duration -> TIMEDOWN .)
+    EXEC            reduce using rule 5 (duration -> TIMEDOWN .)
+    NOTEUP          reduce using rule 5 (duration -> TIMEDOWN .)
+    NOTEDOWN        reduce using rule 5 (duration -> TIMEDOWN .)
+    $end            reduce using rule 5 (duration -> TIMEDOWN .)
+    RFUNC           reduce using rule 5 (duration -> TIMEDOWN .)
+
+
+state 12
+
+    (9) play -> PLAY .
+    (10) play -> PLAY . TIL PLAY
+    (11) play -> PLAY . TIL TIMEUP PLAY
+    (12) play -> PLAY . TIL TIMEDOWN PLAY
+
+    FUNCNAME        reduce using rule 9 (play -> PLAY .)
+    PAUSE           reduce using rule 9 (play -> PLAY .)
+    COMMENT         reduce using rule 9 (play -> PLAY .)
+    NOTE            reduce using rule 9 (play -> PLAY .)
+    TIMEUP          reduce using rule 9 (play -> PLAY .)
+    TIMEDOWN        reduce using rule 9 (play -> PLAY .)
+    PLAY            reduce using rule 9 (play -> PLAY .)
+    CHORD           reduce using rule 9 (play -> PLAY .)
+    EXEC            reduce using rule 9 (play -> PLAY .)
+    NOTEUP          reduce using rule 9 (play -> PLAY .)
+    NOTEDOWN        reduce using rule 9 (play -> PLAY .)
+    $end            reduce using rule 9 (play -> PLAY .)
+    RFUNC           reduce using rule 9 (play -> PLAY .)
+    TIL             shift and go to state 19
+
+
+state 13
+
+    (13) play -> CHORD .
+
+    FUNCNAME        reduce using rule 13 (play -> CHORD .)
+    PAUSE           reduce using rule 13 (play -> CHORD .)
+    COMMENT         reduce using rule 13 (play -> CHORD .)
+    NOTE            reduce using rule 13 (play -> CHORD .)
+    TIMEUP          reduce using rule 13 (play -> CHORD .)
+    TIMEDOWN        reduce using rule 13 (play -> CHORD .)
+    PLAY            reduce using rule 13 (play -> CHORD .)
+    CHORD           reduce using rule 13 (play -> CHORD .)
+    EXEC            reduce using rule 13 (play -> CHORD .)
+    NOTEUP          reduce using rule 13 (play -> CHORD .)
+    NOTEDOWN        reduce using rule 13 (play -> CHORD .)
+    $end            reduce using rule 13 (play -> CHORD .)
+    RFUNC           reduce using rule 13 (play -> CHORD .)
+
+
+state 14
+
+    (14) play -> EXEC . FUNCNAME
+
+    FUNCNAME        shift and go to state 20
+
+
+state 15
+
+    (16) tone -> NOTEUP .
+    (18) tone -> NOTEUP . LBRACKET INT RBRACKET
+
+    FUNCNAME        reduce using rule 16 (tone -> NOTEUP .)
+    PAUSE           reduce using rule 16 (tone -> NOTEUP .)
+    COMMENT         reduce using rule 16 (tone -> NOTEUP .)
+    NOTE            reduce using rule 16 (tone -> NOTEUP .)
+    TIMEUP          reduce using rule 16 (tone -> NOTEUP .)
+    TIMEDOWN        reduce using rule 16 (tone -> NOTEUP .)
+    PLAY            reduce using rule 16 (tone -> NOTEUP .)
+    CHORD           reduce using rule 16 (tone -> NOTEUP .)
+    EXEC            reduce using rule 16 (tone -> NOTEUP .)
+    NOTEUP          reduce using rule 16 (tone -> NOTEUP .)
+    NOTEDOWN        reduce using rule 16 (tone -> NOTEUP .)
+    $end            reduce using rule 16 (tone -> NOTEUP .)
+    RFUNC           reduce using rule 16 (tone -> NOTEUP .)
+    LBRACKET        shift and go to state 21
+
+
+state 16
+
+    (17) tone -> NOTEDOWN .
+    (19) tone -> NOTEDOWN . LBRACKET INT RBRACKET
+
+    FUNCNAME        reduce using rule 17 (tone -> NOTEDOWN .)
+    PAUSE           reduce using rule 17 (tone -> NOTEDOWN .)
+    COMMENT         reduce using rule 17 (tone -> NOTEDOWN .)
+    NOTE            reduce using rule 17 (tone -> NOTEDOWN .)
+    TIMEUP          reduce using rule 17 (tone -> NOTEDOWN .)
+    TIMEDOWN        reduce using rule 17 (tone -> NOTEDOWN .)
+    PLAY            reduce using rule 17 (tone -> NOTEDOWN .)
+    CHORD           reduce using rule 17 (tone -> NOTEDOWN .)
+    EXEC            reduce using rule 17 (tone -> NOTEDOWN .)
+    NOTEUP          reduce using rule 17 (tone -> NOTEDOWN .)
+    NOTEDOWN        reduce using rule 17 (tone -> NOTEDOWN .)
+    $end            reduce using rule 17 (tone -> NOTEDOWN .)
+    RFUNC           reduce using rule 17 (tone -> NOTEDOWN .)
+    LBRACKET        shift and go to state 22
+
+
+state 17
+
+    (2) program -> program command .
+
+    FUNCNAME        reduce using rule 2 (program -> program command .)
+    PAUSE           reduce using rule 2 (program -> program command .)
+    COMMENT         reduce using rule 2 (program -> program command .)
+    NOTE            reduce using rule 2 (program -> program command .)
+    TIMEUP          reduce using rule 2 (program -> program command .)
+    TIMEDOWN        reduce using rule 2 (program -> program command .)
+    PLAY            reduce using rule 2 (program -> program command .)
+    CHORD           reduce using rule 2 (program -> program command .)
+    EXEC            reduce using rule 2 (program -> program command .)
+    NOTEUP          reduce using rule 2 (program -> program command .)
+    NOTEDOWN        reduce using rule 2 (program -> program command .)
+    $end            reduce using rule 2 (program -> program command .)
+    RFUNC           reduce using rule 2 (program -> program command .)
+
+
+state 18
+
+    (3) command -> FUNCNAME = . LFUNC program RFUNC
+
+    LFUNC           shift and go to state 23
+
+
+state 19
+
+    (10) play -> PLAY TIL . PLAY
+    (11) play -> PLAY TIL . TIMEUP PLAY
+    (12) play -> PLAY TIL . TIMEDOWN PLAY
+
+    PLAY            shift and go to state 24
+    TIMEUP          shift and go to state 25
+    TIMEDOWN        shift and go to state 26
+
+
+state 20
+
+    (14) play -> EXEC FUNCNAME .
+
+    FUNCNAME        reduce using rule 14 (play -> EXEC FUNCNAME .)
+    PAUSE           reduce using rule 14 (play -> EXEC FUNCNAME .)
+    COMMENT         reduce using rule 14 (play -> EXEC FUNCNAME .)
+    NOTE            reduce using rule 14 (play -> EXEC FUNCNAME .)
+    TIMEUP          reduce using rule 14 (play -> EXEC FUNCNAME .)
+    TIMEDOWN        reduce using rule 14 (play -> EXEC FUNCNAME .)
+    PLAY            reduce using rule 14 (play -> EXEC FUNCNAME .)
+    CHORD           reduce using rule 14 (play -> EXEC FUNCNAME .)
+    EXEC            reduce using rule 14 (play -> EXEC FUNCNAME .)
+    NOTEUP          reduce using rule 14 (play -> EXEC FUNCNAME .)
+    NOTEDOWN        reduce using rule 14 (play -> EXEC FUNCNAME .)
+    $end            reduce using rule 14 (play -> EXEC FUNCNAME .)
+    RFUNC           reduce using rule 14 (play -> EXEC FUNCNAME .)
+
+
+state 21
+
+    (18) tone -> NOTEUP LBRACKET . INT RBRACKET
+
+    INT             shift and go to state 27
+
+
+state 22
+
+    (19) tone -> NOTEDOWN LBRACKET . INT RBRACKET
+
+    INT             shift and go to state 28
+
+
+state 23
+
+    (3) command -> FUNCNAME = LFUNC . program RFUNC
+    (1) program -> . command
+    (2) program -> . program command
+    (3) command -> . FUNCNAME = LFUNC program RFUNC
+    (6) command -> . duration
+    (7) command -> . PAUSE
+    (8) command -> . COMMENT
+    (15) command -> . play
+    (20) command -> . tone
+    (21) command -> . NOTE
+    (4) duration -> . TIMEUP
+    (5) duration -> . TIMEDOWN
+    (9) play -> . PLAY
+    (10) play -> . PLAY TIL PLAY
+    (11) play -> . PLAY TIL TIMEUP PLAY
+    (12) play -> . PLAY TIL TIMEDOWN PLAY
+    (13) play -> . CHORD
+    (14) play -> . EXEC FUNCNAME
+    (16) tone -> . NOTEUP
+    (17) tone -> . NOTEDOWN
+    (18) tone -> . NOTEUP LBRACKET INT RBRACKET
+    (19) tone -> . NOTEDOWN LBRACKET INT RBRACKET
+
+    FUNCNAME        shift and go to state 3
+    PAUSE           shift and go to state 5
+    COMMENT         shift and go to state 6
+    NOTE            shift and go to state 9
+    TIMEUP          shift and go to state 10
+    TIMEDOWN        shift and go to state 11
+    PLAY            shift and go to state 12
+    CHORD           shift and go to state 13
+    EXEC            shift and go to state 14
+    NOTEUP          shift and go to state 15
+    NOTEDOWN        shift and go to state 16
+
+    program                        shift and go to state 29
+    command                        shift and go to state 2
+    duration                       shift and go to state 4
+    play                           shift and go to state 7
+    tone                           shift and go to state 8
+
+state 24
+
+    (10) play -> PLAY TIL PLAY .
+
+    FUNCNAME        reduce using rule 10 (play -> PLAY TIL PLAY .)
+    PAUSE           reduce using rule 10 (play -> PLAY TIL PLAY .)
+    COMMENT         reduce using rule 10 (play -> PLAY TIL PLAY .)
+    NOTE            reduce using rule 10 (play -> PLAY TIL PLAY .)
+    TIMEUP          reduce using rule 10 (play -> PLAY TIL PLAY .)
+    TIMEDOWN        reduce using rule 10 (play -> PLAY TIL PLAY .)
+    PLAY            reduce using rule 10 (play -> PLAY TIL PLAY .)
+    CHORD           reduce using rule 10 (play -> PLAY TIL PLAY .)
+    EXEC            reduce using rule 10 (play -> PLAY TIL PLAY .)
+    NOTEUP          reduce using rule 10 (play -> PLAY TIL PLAY .)
+    NOTEDOWN        reduce using rule 10 (play -> PLAY TIL PLAY .)
+    $end            reduce using rule 10 (play -> PLAY TIL PLAY .)
+    RFUNC           reduce using rule 10 (play -> PLAY TIL PLAY .)
+
+
+state 25
+
+    (11) play -> PLAY TIL TIMEUP . PLAY
+
+    PLAY            shift and go to state 30
+
+
+state 26
+
+    (12) play -> PLAY TIL TIMEDOWN . PLAY
+
+    PLAY            shift and go to state 31
+
+
+state 27
+
+    (18) tone -> NOTEUP LBRACKET INT . RBRACKET
+
+    RBRACKET        shift and go to state 32
+
+
+state 28
+
+    (19) tone -> NOTEDOWN LBRACKET INT . RBRACKET
+
+    RBRACKET        shift and go to state 33
+
+
+state 29
+
+    (3) command -> FUNCNAME = LFUNC program . RFUNC
+    (2) program -> program . command
+    (3) command -> . FUNCNAME = LFUNC program RFUNC
+    (6) command -> . duration
+    (7) command -> . PAUSE
+    (8) command -> . COMMENT
+    (15) command -> . play
+    (20) command -> . tone
+    (21) command -> . NOTE
+    (4) duration -> . TIMEUP
+    (5) duration -> . TIMEDOWN
+    (9) play -> . PLAY
+    (10) play -> . PLAY TIL PLAY
+    (11) play -> . PLAY TIL TIMEUP PLAY
+    (12) play -> . PLAY TIL TIMEDOWN PLAY
+    (13) play -> . CHORD
+    (14) play -> . EXEC FUNCNAME
+    (16) tone -> . NOTEUP
+    (17) tone -> . NOTEDOWN
+    (18) tone -> . NOTEUP LBRACKET INT RBRACKET
+    (19) tone -> . NOTEDOWN LBRACKET INT RBRACKET
+
+    RFUNC           shift and go to state 34
+    FUNCNAME        shift and go to state 3
+    PAUSE           shift and go to state 5
+    COMMENT         shift and go to state 6
+    NOTE            shift and go to state 9
+    TIMEUP          shift and go to state 10
+    TIMEDOWN        shift and go to state 11
+    PLAY            shift and go to state 12
+    CHORD           shift and go to state 13
+    EXEC            shift and go to state 14
+    NOTEUP          shift and go to state 15
+    NOTEDOWN        shift and go to state 16
+
+    command                        shift and go to state 17
+    duration                       shift and go to state 4
+    play                           shift and go to state 7
+    tone                           shift and go to state 8
+
+state 30
+
+    (11) play -> PLAY TIL TIMEUP PLAY .
+
+    FUNCNAME        reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    PAUSE           reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    COMMENT         reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    NOTE            reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    TIMEUP          reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    TIMEDOWN        reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    PLAY            reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    CHORD           reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    EXEC            reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    NOTEUP          reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    NOTEDOWN        reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    $end            reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+    RFUNC           reduce using rule 11 (play -> PLAY TIL TIMEUP PLAY .)
+
+
+state 31
+
+    (12) play -> PLAY TIL TIMEDOWN PLAY .
+
+    FUNCNAME        reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    PAUSE           reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    COMMENT         reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    NOTE            reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    TIMEUP          reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    TIMEDOWN        reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    PLAY            reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    CHORD           reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    EXEC            reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    NOTEUP          reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    NOTEDOWN        reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    $end            reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+    RFUNC           reduce using rule 12 (play -> PLAY TIL TIMEDOWN PLAY .)
+
+
+state 32
+
+    (18) tone -> NOTEUP LBRACKET INT RBRACKET .
+
+    FUNCNAME        reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    PAUSE           reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    COMMENT         reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    NOTE            reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    TIMEUP          reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    TIMEDOWN        reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    PLAY            reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    CHORD           reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    EXEC            reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    NOTEUP          reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    NOTEDOWN        reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    $end            reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+    RFUNC           reduce using rule 18 (tone -> NOTEUP LBRACKET INT RBRACKET .)
+
+
+state 33
+
+    (19) tone -> NOTEDOWN LBRACKET INT RBRACKET .
+
+    FUNCNAME        reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    PAUSE           reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    COMMENT         reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    NOTE            reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    TIMEUP          reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    TIMEDOWN        reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    PLAY            reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    CHORD           reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    EXEC            reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    NOTEUP          reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    NOTEDOWN        reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    $end            reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+    RFUNC           reduce using rule 19 (tone -> NOTEDOWN LBRACKET INT RBRACKET .)
+
+
+state 34
+
+    (3) command -> FUNCNAME = LFUNC program RFUNC .
+
+    FUNCNAME        reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    PAUSE           reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    COMMENT         reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    NOTE            reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    TIMEUP          reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    TIMEDOWN        reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    PLAY            reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    CHORD           reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    EXEC            reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    NOTEUP          reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    NOTEDOWN        reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    $end            reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+    RFUNC           reduce using rule 3 (command -> FUNCNAME = LFUNC program RFUNC .)
+
